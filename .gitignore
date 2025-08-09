@@ -1,0 +1,15 @@
+# Logs
+*.log
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+.build
+node_modules
+dist
+
+.DS_Store
+uploads
+
+package-lock.json
+bun.lock

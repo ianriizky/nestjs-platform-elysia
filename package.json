@@ -1,0 +1,87 @@
+{
+  "name": "@ianriizky/nestjs-platform-elysia",
+  "version": "0.1.0",
+  "description": "NestJS adapter for Elysia.",
+  "homepage": "https://github.com/ianriizky/nestjs-platform-elysia#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ianriizky/nestjs-platform-elysia.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ianriizky/nestjs-platform-elysia/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Septianata Rizky Pratama",
+    "url": "https://ianrizky.web.id"
+  },
+  "engineStrict": true,
+  "engines": {
+    "bun": "^1.2.0",
+    "node": ">= 20"
+  },
+  "volta": {
+    "node": "22.18.0",
+    "npm": "10.9.3"
+  },
+  "packageManager": "bun@1.2.19",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js"
+    },
+    "./adapters": {
+      "require": "./dist/esm/src/adapters/index.js",
+      "import": "./dist/esm/src/adapters/index.js"
+    },
+    "./interfaces": {
+      "require": "./dist/esm/src/interfaces/index.js",
+      "import": "./dist/esm/src/interfaces/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@elysiajs/node": "^1.3.0",
+    "@elysiajs/static": "^1.3.0",
+    "elysia": "^1.3.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "@nestjs/common": "^11.1.0",
+    "@nestjs/core": "^11.1.0",
+    "@swc/cli": "^0.7.8",
+    "@swc/core": "^1.13.3",
+    "@types/autocannon": "^7.12.7",
+    "@types/bun": "^1.2.19",
+    "autocannon": "^8.0.0",
+    "bun": "^1.2.0",
+    "eslint": "^9.33.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-prettier": "^5.5.4",
+    "globals": "^16.3.0",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.39.0"
+  },
+  "scripts": {
+    "build:esm": "bun ./node_modules/typescript/bin/tsc --p tsconfig.esm.json",
+    "build:cjs": "bun ./node_modules/typescript/bin/tsc --p tsconfig.cjs.json",
+    "build": "bun run build:esm && bun run build:cjs",
+    "dev": "cd example && bun nest start -w --copy-files",
+    "dev:bun": "cd example && nest start -w --copy-files --exec \"bun run --inspect\"",
+    "benchmark": "bun dev & ( sleep 5 && autocannon -c 200 -d 5 -p 10 http://localhost:3000 )",
+    "benchmark:bun": "bun dev:bun & ( sleep 5 && autocannon -c 200 -d 5 -p 10 http://localhost:3000 )",
+    "benchmark:bun:file": "bun run dev:bun & ( sleep 5 && bun run ./benchmarks/benchmark.mjs)",
+    "benchmark:node:file": "bun run dev  & ( sleep 5 && node ./benchmarks/benchmark.mjs)"
+  },
+  "trustedDependencies": [
+    "@nestjs/core",
+    "@swc/core",
+    "bun"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always",
+    "source.organizeImports": "always",
+    "source.sortImports": "always"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "jest.runMode": "on-demand",
+  "npm.packageManager": "bun",
+  "typescript.tsdk": "node_modules/typescript/lib"
+}
