@@ -1,8 +1,22 @@
 # source
-.ts
+src
 example
+benchmarks
 
 # configs
+.editorconfig
+.eslintrc
+.prettierrc
+.prettierignore
+.vscode
+eslint.config.mjs
 tsconfig.json
 tsconfig.cjs.json
 tsconfig.esm.json
+
+# git
+.git
+.gitignore
+
+# misc
+node_modules
